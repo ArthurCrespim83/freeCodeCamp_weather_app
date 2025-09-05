@@ -51,11 +51,6 @@ A simple web application to display current weather information for any city.
 * **JavaScript:** Application logic, user interactions, and API requests.
 * **Open-Meteo API:** Real-time weather data provider.
 
-## How to Run
-
-1.  Clone this repository to your local machine.
-2.  Open the `index.html` file in your browser.
-
 ## Demo
 
 You can see here: [https://gregarious-cassata-27d5d7.netlify.app/]
