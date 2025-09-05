@@ -17,12 +17,7 @@ Um aplicativo de clima simples e responsivo, desenvolvido com HTML, CSS e JavaSc
 * **Open-Meteo API:** Fonte de dados de previsão do tempo gratuita e sem necessidade de chave de API.
 
 ## 🔌 Como Utilizar
-
-1.  Clone este repositório:
-    ```bash
-    git clone [https://github.com/seu-usuario/nome-do-seu-repo.git](https://github.com/seu-usuario/nome-do-seu-repo.git)
-    ```
-2.  Abra o arquivo `index.html` no seu navegador.
+1.  Abra o arquivo [https://gregarious-cassata-27d5d7.netlify.app] no seu navegador.
 3.  Digite o nome de uma cidade no campo de busca e clique em "Search".
 
 ## ⚠️ Possíveis Melhorias
@@ -33,17 +28,6 @@ Este projeto é uma base sólida, mas pode ser expandido com:
 * Ícones meteorológicos dinâmicos.
 * Localização automática do usuário.
 * Tratamento mais robusto de erros e feedback visual.
-
----
-
-**Observações:**
-
-* **`[Seu-usuário/nome-do-seu-repo.git]`**: Lembre-se de substituir isso pelo seu nome de usuário do GitHub e o nome real do seu repositório.
-* **`Open-Meteo`**: O link para a API é importante para dar crédito e direcionar quem tiver interesse.
-* **Seções:** A descrição está dividida em seções lógicas (Funcionalidades, Tecnologias, Como Utilizar, Possíveis Melhorias), o que facilita a leitura.
-* **Emojis:** Usei alguns emojis para deixar a descrição mais visual e amigável.
-
-Sinta-se à vontade para adaptar essa descrição ao seu estilo e aos detalhes específicos do seu projeto!
 
 ................................................................................................................................................................
 
@@ -74,5 +58,5 @@ A simple web application to display current weather information for any city.
 
 ## Demo
 
-(Optional: If you have a link to an online demo, add it here. E.g., You can see a demo [here](your_demo_link).)
+You can see here: [https://gregarious-cassata-27d5d7.netlify.app/]
 
