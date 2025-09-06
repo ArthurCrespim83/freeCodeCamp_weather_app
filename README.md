@@ -17,7 +17,7 @@ Um aplicativo de clima simples e responsivo, desenvolvido com HTML, CSS e JavaSc
 * **Open-Meteo API:** Fonte de dados de previsão do tempo gratuita e sem necessidade de chave de API.
 
 ## 🔌 Como Utilizar
-1.  Abra o arquivo [https://gregarious-cassata-27d5d7.netlify.app] no seu navegador.
+1.  Abra o arquivo [https://weather-app-27d5d7.netlify.app/] no seu navegador.
 3.  Digite o nome de uma cidade no campo de busca e clique em "Search".
 
 ## ⚠️ Possíveis Melhorias
@@ -53,5 +53,5 @@ A simple web application to display current weather information for any city.
 
 ## Demo
 
-You can see here: [https://gregarious-cassata-27d5d7.netlify.app/]
+You can see here: [https://weather-app-27d5d7.netlify.app/]
 
