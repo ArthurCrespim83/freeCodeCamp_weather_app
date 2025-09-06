@@ -1,5 +1,5 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,9 +91,15 @@ h1 {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 #temperature {
@@ -102,20 +108,25 @@ h1 {
   font-weight: bold;
 }
 
-#condition, #windSpeed {
+#condition,
+#windSpeed {
   font-size: 1.1rem;
   color: #555;
   margin-top: 5px;
 }
 
-.temperature-container, .condition-container, .wind-container {
+.temperature-container,
+.condition-container,
+.wind-container {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 15px;
 }
 
-.temperature-container i, .condition-container i, .wind-container i {
+.temperature-container i,
+.condition-container i,
+.wind-container i {
   font-size: 1.5rem;
   color: #2c3e50;
 }
@@ -125,4 +136,69 @@ h1 {
   font-weight: bold;
   font-size: 1.1rem;
   margin-top: 20px;
+}
+
+#unitToggle {
+  padding: 8px 15px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+#unitToggle:hover {
+  background: #34495e;
+}
+
+#dailyForecast {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 2px solid #ddd;
+}
+
+.forecast-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-5px);
+}
+
+.forecast-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+.forecast-card .forecast-icon {
+  font-size: 2rem;
+  color: #f39c12;
+  margin: 10px 0;
+}
+
+.forecast-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.temp-max {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.temp-min {
+  color: #3498db;
 }
