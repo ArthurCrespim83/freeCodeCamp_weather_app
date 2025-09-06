@@ -139,6 +139,9 @@ function displayWeather(weather, city, country) {
 
   weatherIcon.className = `fa-solid ${iconClass}`;
   updateCurrentTemp(weather.temperature);
+
+  window.originalCurrentTempCelsius = weather.temperature;
+  updateCurrentTemp(weather.temperature);
 }
 
 function displayForecast(daily) {
@@ -172,48 +175,64 @@ function displayForecast(daily) {
 
 function convertTemperature(temp, toFahrenheit) {
   if (toFahrenheit) {
+    // Fórmula: (°C × 9/5) + 32 = °F
     return (temp * 9) / 5 + 32;
+  } else {
+    // Fórmula: (°F - 32) × 5/9 = °C
+    return (temp - 32) * 5 / 9;
   }
-  return ((temp - 32) * 5) / 9;
 }
 
-function updateCurrentTemp(temp) {
+function updateCurrentTemp(tempCelsius) {
   const currentTemp = document.getElementById("temperature");
-  let displayTemp = isCelsius ? temp : convertTemperature(temp, true);
-  currentTemp.textContent = `${displayTemp.toFixed(1)}°${
-    isCelsius ? "C" : "F"
-  }`;
+  let displayTemp = isCelsius ? tempCelsius : convertTemperature(tempCelsius, true);
+  currentTemp.textContent = `${displayTemp.toFixed(1)}°${isCelsius ? "C" : "F"}`;
 }
 
 function updateTemperatures() {
-  const currentTemp = document.getElementById("temperature");
-  const tempValue = parseFloat(currentTemp.textContent);
-  let newCurrentTemp;
+  const currentTempElement = document.getElementById("temperature");
+  // Precisamos obter o valor da temperatura como um número, não como string formatada
+  // Vamos assumir que o valor original (em Celsius) está armazenado ou pode ser recuperado
+  // Uma maneira mais robusta é guardar o valor em Celsius original em uma variável global
 
-  if (isCelsius) {
-    newCurrentTemp = convertTemperature(tempValue, false);
-  } else {
-    newCurrentTemp = convertTemperature(tempValue, true);
+  // --- SOLUÇÃO RECOMENDADA: Guardar o valor em Celsius original ---
+  if (typeof window.originalCurrentTempCelsius === 'undefined') {
+      // Se ainda não foi definido, pegue do elemento e armazene
+      // Isso pode acontecer se o usuário alternar antes de ter dados
+      const tempStr = currentTempElement.textContent.replace(/[^0-9.-]/g, ''); // Remove caracteres não numéricos
+      if (tempStr) {
+          window.originalCurrentTempCelsius = parseFloat(tempStr);
+      } else {
+          window.originalCurrentTempCelsius = 0; // Valor padrão caso não haja temperatura
+      }
   }
-  currentTemp.textContent = `${newCurrentTemp.toFixed(1)}°${
-    isCelsius ? "C" : "F"
-  }`;
+  // --- FIM SOLUÇÃO RECOMENDADA ---
+
+
+  let tempToDisplay;
+  if (isCelsius) {
+    tempToDisplay = window.originalCurrentTempCelsius;
+  } else {
+    tempToDisplay = convertTemperature(window.originalCurrentTempCelsius, true);
+  }
+
+  currentTempElement.textContent = `${tempToDisplay.toFixed(1)}°${isCelsius ? "C" : "F"}`;
+
 
   // Update forecast temperatures
   if (window.weatherData && window.weatherData.daily) {
     for (let i = 1; i <= 5; i++) {
       const maxTempElement = document.getElementById(`maxTemp-${i}`);
       const minTempElement = document.getElementById(`minTemp-${i}`);
-      let maxTemp = window.weatherData.daily.temperature_2m_max[i];
-      let minTemp = window.weatherData.daily.temperature_2m_min[i];
 
-      if (!isCelsius) {
-        maxTemp = convertTemperature(maxTemp, true);
-        minTemp = convertTemperature(minTemp, true);
-      }
+      let maxTempCelsius = window.weatherData.daily.temperature_2m_max[i];
+      let minTempCelsius = window.weatherData.daily.temperature_2m_min[i];
 
-      maxTempElement.textContent = `${maxTemp.toFixed(1)}°`;
-      minTempElement.textContent = `${minTemp.toFixed(1)}°`;
+      let maxTempToDisplay = isCelsius ? maxTempCelsius : convertTemperature(maxTempCelsius, true);
+      let minTempToDisplay = isCelsius ? minTempCelsius : convertTemperature(minTempCelsius, true);
+
+      maxTempElement.textContent = `${maxTempToDisplay.toFixed(1)}°`;
+      minTempElement.textContent = `${minTempToDisplay.toFixed(1)}°`;
     }
   }
 }
