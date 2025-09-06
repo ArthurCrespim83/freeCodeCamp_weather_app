@@ -38,6 +38,42 @@ const weatherDescriptions = {
   99: "Thunderstorm with heavy hail",
 };
 
+const weatherIcons = {
+  // Ícones para céu limpo e parcialmente nublado
+  0: "fa-sun",
+  1: "fa-cloud-sun",
+  2: "fa-cloud-sun",
+  3: "fa-cloud",
+  // Ícones para nevoeiro
+  45: "fa-smog",
+  48: "fa-smog",
+  // Ícones para garoa e chuva
+  51: "fa-cloud-drizzle",
+  53: "fa-cloud-drizzle",
+  55: "fa-cloud-showers-heavy",
+  56: "fa-cloud-showers-heavy",
+  57: "fa-cloud-showers-heavy",
+  61: "fa-cloud-rain",
+  63: "fa-cloud-rain",
+  65: "fa-cloud-showers-heavy",
+  66: "fa-cloud-rain",
+  67: "fa-cloud-showers-heavy",
+  // Ícones para neve
+  71: "fa-snowflake",
+  73: "fa-snowflake",
+  75: "fa-snowflake",
+  77: "fa-snowflake",
+  80: "fa-cloud-showers-heavy",
+  81: "fa-cloud-showers-heavy",
+  82: "fa-cloud-showers-heavy",
+  85: "fa-snowflake",
+  86: "fa-snowflake",
+  // Ícones para tempestades
+  95: "fa-cloud-bolt",
+  96: "fa-cloud-bolt",
+  99: "fa-cloud-bolt",
+};
+
 async function getCoordinates(city) {
   showError("");
   try {
@@ -84,15 +120,19 @@ function displayWeather(weather, city, country) {
   const temp = document.getElementById("temperature");
   const condition = document.getElementById("condition");
   const windSpeed = document.getElementById("windSpeed");
+  const weatherIcon = document.getElementById("weatherIcon");
 
   const weatherCondition =
     weatherDescriptions[weather.weathercode] || "Unknown Condition";
+  const iconClass = weatherIcons[weather.weathercode] || "fa-cloud-question";
 
   weatherContainer.style.display = "block";
   cityHeader.textContent = `${city}, ${country}`;
-  temp.textContent = `Temperature: ${weather.temperature}°C`;
-  condition.textContent = `Condition: ${weatherCondition}`;
-  windSpeed.textContent = `Wind Speed: ${weather.windspeed} km/h`;
+  temp.textContent = `${weather.temperature}°C`;
+  condition.textContent = `${weatherCondition}`;
+  windSpeed.textContent = `${weather.windspeed} km/h`;
+
+  weatherIcon.className = `fa-solid ${iconClass}`;
 }
 
 function showError(message) {

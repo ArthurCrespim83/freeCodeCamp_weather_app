@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
   </head>
   <body>
     <div class="container">
@@ -20,10 +24,22 @@
       </div>
 
       <div id="weatherContainer">
+        <div class="weather-icon-container">
+          <i id="weatherIcon" class="fa-solid fa-sun"></i>
+        </div>
         <h2 id="cityName"></h2>
-        <p id="temperature"></p>
-        <p id="condition"></p>
-        <p id="windSpeed"></p>
+        <div class="temperature-container">
+          <i class="fa-solid fa-temperature-half"></i>
+          <p id="temperature"></p>
+        </div>
+        <div class="condition-container">
+          <i class="fa-solid fa-cloud"></i>
+          <p id="condition"></p>
+        </div>
+        <div class="wind-container">
+          <i class="fa-solid fa-wind"></i>
+          <p id="windSpeed"></p>
+        </div>
       </div>
 
       <p id="errorMessage"></p>
